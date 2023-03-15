@@ -20,16 +20,15 @@ namespace RPGChar_PM
     /// </summary>
     public partial class MainWindow : Window
     {
-        private RPGCharacter _character = new RPGCharacter();
-        private Random _rng= new Random();
+        private Random _rng = new Random();
+        private RPGCharacter _character;
+        
         public MainWindow()
         {
             InitializeComponent();
+            _character = new RPGCharacter(_rng);
             updateStats();
-            int d1 = RPGCharacter.RollDice(2, 20);
-            int d2 = RPGCharacter.RollDice(1000, 8);
-            MessageBox.Show(d1.ToString());
-            MessageBox.Show(d2.ToString());
+            
         }
 
         private void buttonUpdateName_Click(object sender, RoutedEventArgs e)
@@ -43,23 +42,43 @@ namespace RPGChar_PM
             _character.Roll();
             updateStats();
             double odds = 0.5f;
-
             _character.PartyMembers.Clear();
             foreach (ListBoxItem i in ListPotentialMembers.Items) 
             { if (_rng.NextDouble() > odds)
                 {
-                    RPGCharacter r = new RPGCharacter()
+                    RPGCharacter r = new RPGCharacter(_rng)
                     {
                         Name = i.Content.ToString()
                     };
                     _character.PartyMembers.Add(r);
                 }
             }
+            if (_character.PartyMembers.Count > 0) 
+            {
+                _character.PartyMembers[0].FavoriteColor = Brushes.Gold;
+            }
+
+            // Adding party mambers to party members list box.
             ListPartyNumbers.Items.Clear();
+            Brush color1 = Brushes.Aqua;
+            Brush color2 = Brushes.OrangeRed;
             foreach (RPGCharacter r in _character.PartyMembers) 
             { 
               ListBoxItem i = new ListBoxItem();
-                i.Content = $"{r.Name} STR: {r.Strength} INT: {r.Intelligence}"; 
+                if (r.FavoriteColor != null) 
+                { 
+                 i.Background = r.FavoriteColor;
+                }
+                // Alternate background colors
+                else if (ListPartyNumbers.Items.Count % 2 == 0)
+                {
+                    i.Background = color1;
+                }
+                else
+                { 
+                 i.Background = color2;
+                }
+                i.Content = $"{r.Name} \n STR: {r.Strength} \n INT: {r.Intelligence}"; 
               ListPartyNumbers.Items.Add(i);
             }
         }

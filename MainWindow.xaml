@@ -7,9 +7,13 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBox x:Name="textBoxName" HorizontalAlignment="Left" Margin="75,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.HelpText="Enter Name"/>
+        <Grid.Background>
+            <ImageBrush ImageSource="/elden_ring1.jpg"/>
+        </Grid.Background>
+
+        <TextBox x:Name="textBoxName" HorizontalAlignment="Left" Margin="75,66,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120" AutomationProperties.HelpText="Enter Name" Opacity="0.7"/>
         <TextBlock HorizontalAlignment="Left" Margin="41,45,0,0" TextWrapping="Wrap" Text="Name:" VerticalAlignment="Top"/>
-        <Button x:Name="buttonUpdateName" Content="Update Name" HorizontalAlignment="Left" Margin="41,191,0,0" VerticalAlignment="Top" Width="94" Click="buttonUpdateName_Click"/>
+        <Button x:Name="buttonUpdateName" Content="Update Name" HorizontalAlignment="Left" Margin="41,191,0,0" VerticalAlignment="Top" Width="94" Click="buttonUpdateName_Click" Opacity="0.7"/>
         <TextBlock HorizontalAlignment="Left" Margin="41,102,0,0" TextWrapping="Wrap" Text="STR" VerticalAlignment="Top"/>
         <TextBlock x:Name="textStrength" HorizontalAlignment="Left" Margin="75,102,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="41,123,0,0" TextWrapping="Wrap" Text="INT" VerticalAlignment="Top"/>
@@ -22,8 +26,8 @@
         <TextBlock x:Name="textWisdom" HorizontalAlignment="Left" Margin="132,123,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
         <TextBlock HorizontalAlignment="Left" Margin="98,144,0,0" TextWrapping="Wrap" Text="CHR" VerticalAlignment="Top"/>
         <TextBlock x:Name="textCharisma" HorizontalAlignment="Left" Margin="132,144,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top"/>
-        <Button x:Name="buttonReroll" Content="Re-Roll" HorizontalAlignment="Left" Margin="163,191,0,0" VerticalAlignment="Top" Width="104" Click="buttonReroll_Click"/>
-        <ListBox x:Name="ListPotentialMembers" Margin="346,66,346,223">
+        <Button x:Name="buttonReroll" Content="Re-Roll" HorizontalAlignment="Left" Margin="163,191,0,0" VerticalAlignment="Top" Width="104" Click="buttonReroll_Click" Opacity="0.7"/>
+        <ListBox x:Name="ListPotentialMembers" Margin="334,66,334,223" Opacity="0.7">
             <ListBoxItem Content="Elon Musk"/>
             <ListBoxItem Content="Mike Wazowski"/>
             <ListBoxItem Content="Bob Ross"/>
@@ -31,7 +35,7 @@
             <ListBoxItem Content="Kid Named Finger"/>
         </ListBox>
         <TextBlock HorizontalAlignment="Center" Margin="0,45,0,0" TextWrapping="Wrap" Text="Potential Party Members:" VerticalAlignment="Top"/>
-        <ListBox x:Name="ListPartyNumbers" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="477,66,81,223"/>
+        <ListBox x:Name="ListPartyNumbers" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="477,66,81,223" Opacity="0.7"/>
         <TextBlock HorizontalAlignment="Left" Margin="515,48,0,0" TextWrapping="Wrap" Text="Party Memebrs:" VerticalAlignment="Top"/>
 
     </Grid>
